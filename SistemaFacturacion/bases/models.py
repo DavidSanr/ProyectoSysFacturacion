@@ -12,6 +12,7 @@ class ClaseModelo(models.Model):
     fecha_modificacion = models.DateTimeField(auto_now=True)
     usuario_creador = models.ForeignKey(User, on_delete=models.CASCADE,related_name='usuarioCreador')
     usuario_modificador = models.ForeignKey(User,related_name='usuarioModificador',blank = True,null=True,on_delete=models.CASCADE)
+
     class Meta:
         abstract = True
     
