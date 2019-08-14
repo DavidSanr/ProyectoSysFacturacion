@@ -47,7 +47,7 @@
                   <td>{{ item.fecha_modificacion | date:"d/m/Y H:i:s"}}</td>
                   <td>
                   <a href="{% url 'inv:categoria_editar' item.id %}" class="btn btn-warning btn-circle" role="button"><i class="far fa-edit"></i></a>
-                  <button class="btn btn-danger btn-circle" id="borrarBoton" data-url="{% url 'inv:categoria_borrar' item.id%}"><i class="far fa-trash-alt"></i></button>
+                  <a class="btn btn-danger btn-circle" role="button" href="{% url 'inv:categoria_borrar' item.id%}"><i class="far fa-trash-alt"></i></button>
                   
                    </td>
                   
@@ -76,7 +76,7 @@ $(document).ready(function(){
 $('.table').DataTable();
 
 
-$('#borrarBoton').click(() => {
+/* $('#borrarBoton').click(() => {
 
 var value = $('#borrarBoton').attr('data-url');
 $.post(value,{
@@ -89,8 +89,10 @@ $.post(value,{
 
 });
 
+*/
 
-$()
+
+
 
 </script>
 
