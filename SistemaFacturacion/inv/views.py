@@ -229,7 +229,7 @@ class ProductoCreate(LoginRequiredMixin,CreateView):
     template_name='inv/producto/producto_form.html'
     context_object_name = 'obj'
     form_class = ProductoForm
-    success_url =  reverse_lazy('inv:producto_create')
+    success_url =  reverse_lazy('inv:producto_nueva')
     login_url="bases:login"
     
     
@@ -240,10 +240,10 @@ class ProductoCreate(LoginRequiredMixin,CreateView):
 
 class ProductoEdit(LoginRequiredMixin, UpdateView):
     model = Producto
-    template_name='inv/unidadMedida/producto_form.html'
+    template_name='inv/producto/producto_form.html'
     context_object_name = 'obj'
     form_class = ProductoForm
-    success_url =  reverse_lazy('inv:producto_edit')
+    success_url =  reverse_lazy('inv:producto_list')
     login_url="bases:login"
     def form_valid(self, form):
         form.instance.usuario_modificador = self.request.user.id

@@ -5,7 +5,7 @@ from django.contrib import admin
 
 
 
-from .models import Categoria,SubCategoria
+from .models import Categoria,SubCategoria,Producto
 
 # Register your models here.
 
@@ -18,4 +18,8 @@ class CategoriaAdmin(admin.ModelAdmin):
 
 @admin.register(SubCategoria)
 class SubCategoriaAdmin(admin.ModelAdmin):
+    pass
+
+@admin.register(Producto)
+class ProductoAdmin(admin.ModelAdmin):
     pass

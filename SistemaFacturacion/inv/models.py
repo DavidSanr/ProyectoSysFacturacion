@@ -97,9 +97,10 @@ class Producto(ClaseModelo):
     
     def save(self):
         self.descripcion = self.descripcion.upper()
-        super([Producto],self).save()
+        super(Producto,self).save()
         
     class Meta:
         verbose_name_plural = "Productos"
+        unique_together = ('codigo','codigo_barra')
     
     
