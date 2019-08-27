@@ -45,3 +45,20 @@ class ProveedorEdit(LoginRequiredMixin,UpdateView):
         form.instance.usuario_modificador= self.request.user.dir
         print(self.request.user.id)
         return super().form_valid(form)
+    
+def proveedor_inactivar(request,id):    
+    # unidad_medida:UnidadMedida = UnidadMedida.objects.filter(pk = id ).first()
+    prod = Proveedor.objects.filter(pk = id).first()
+    contexto={}
+    template_name= "cmp/catalogos_borrar.html"
+    if not prod:
+        redirect("cmp:proveedor_list")
+        
+    if request.method =='GET':
+        contexto = {'obj':prod}
+    if request.method == 'POST':
+        prod.estado = False
+        prod.save()        
+        return redirect("cmp:proveedor_list")
+        
+    return render(request,template_name,contexto)
