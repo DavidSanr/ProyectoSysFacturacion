@@ -5,7 +5,7 @@ from django.shortcuts import render
 from django.urls import reverse_lazy
 from django.views.generic import CreateView, ListView, UpdateView
 
-from cmp.forms import ProveedorForm
+from .forms import ProveedorForm
 
 from .models import Proveedor
 

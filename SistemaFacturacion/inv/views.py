@@ -229,7 +229,7 @@ class ProductoCreate(LoginRequiredMixin,CreateView):
     template_name='inv/producto/producto_form.html'
     context_object_name = 'obj'
     form_class = ProductoForm
-    success_url =  reverse_lazy('inv:producto_nueva')
+    success_url =  reverse_lazy('inv:producto_list')
     login_url="bases:login"
     
     
