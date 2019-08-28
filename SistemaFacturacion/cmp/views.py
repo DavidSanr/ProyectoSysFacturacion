@@ -42,7 +42,7 @@ class ProveedorEdit(LoginRequiredMixin,UpdateView):
     
     
     def form_valid(self,form):
-        form.instance.usuario_modificador= self.request.user.dir
+        form.instance.usuario_modificador= self.request.user.id
         print(self.request.user.id)
         return super().form_valid(form)
     
@@ -59,7 +59,8 @@ def proveedor_inactivar(request,id):
         contexto = {'obj':prove}
     if request.method == 'POST':
         prove.estado = False
-        prove.save()        
-        return redirect("cmp:proveedor_list")
+        prove.save()      
+        contexto = {'obj':'OK'}  
+        return HttpResponse('Proveedor Inactivado')
         
     return render(request,template_name,contexto)
