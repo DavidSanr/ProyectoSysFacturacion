@@ -6,6 +6,6 @@ urlpatterns = [
 path('proveedor/',ProveedorView.as_view(), name = 'proveedor_list'),
 path('proveedor/nuevo',ProveedorNew.as_view(), name='proveedor_nuevo'),
 path('proveedor/editar/<int:pk>',ProveedorEdit.as_view(),name='proveedor_editar'),
-path('proveedor/inactivar/<int:pk>',proveedor_inactivar,name='proveedor_inactivar')
+path('proveedor/inactivar/<int:id>',proveedor_inactivar,name='proveedor_inactivar')
 
 ]

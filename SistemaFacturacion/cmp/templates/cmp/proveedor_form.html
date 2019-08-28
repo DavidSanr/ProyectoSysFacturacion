@@ -3,7 +3,7 @@
         {% if obj %}
         <form role="form" action="{% url 'cmp:proveedor_editar' obj.pk %}" method="post"  class="form-inline">
         {% else %}
-        <form role="form" action="{% url 'cmp:proveedor_nueva' %}" method="post"  class="form-inline">
+        <form role="form" action="{% url 'cmp:proveedor_nuevo' %}" method="post"  class="form-inline">
         {% endif %}
             <div class="col-xl-12 col-md-12 mb-12">
                 {% if obj %}

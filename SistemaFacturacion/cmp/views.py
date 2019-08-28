@@ -1,12 +1,12 @@
 from os.path import isdir
 
 from django.contrib.auth.mixins import LoginRequiredMixin
+from django.http import HttpResponse
 from django.shortcuts import render
 from django.urls import reverse_lazy
 from django.views.generic import CreateView, ListView, UpdateView
 
 from .forms import ProveedorForm
-
 from .models import Proveedor
 
 # Create your views here.
@@ -27,7 +27,7 @@ class ProveedorNew(LoginRequiredMixin,CreateView):
     login_url = 'bases:login'
     
     def form_valid(self,form):
-        form.instace.usuario_creador = self.request.user
+        form.instance.usuario_creador = self.request.user
         print(self.request.user.id)
         return super().form_valid(form)
     
@@ -48,17 +48,18 @@ class ProveedorEdit(LoginRequiredMixin,UpdateView):
     
 def proveedor_inactivar(request,id):    
     # unidad_medida:UnidadMedida = UnidadMedida.objects.filter(pk = id ).first()
-    prod = Proveedor.objects.filter(pk = id).first()
+    prove = Proveedor.objects.filter(pk = id).first()
     contexto={}
-    template_name= "cmp/catalogos_borrar.html"
-    if not prod:
-        redirect("cmp:proveedor_list")
+    template_name= "cmp/cmp_borrar.html"
+    if not prove:
+        return HttpResponse('Proveedor No existe' + str(id))
+        
         
     if request.method =='GET':
-        contexto = {'obj':prod}
+        contexto = {'obj':prove}
     if request.method == 'POST':
-        prod.estado = False
-        prod.save()        
+        prove.estado = False
+        prove.save()        
         return redirect("cmp:proveedor_list")
         
     return render(request,template_name,contexto)
